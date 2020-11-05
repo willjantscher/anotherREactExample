@@ -20,6 +20,7 @@ import React from 'react'
 import List from './List'
 import Form from './Form'
 import Checker from './dateChecker'
+import dayChecker from './dayChecker'
 
 // document.title="To-Do List"
 // function App() {
@@ -47,6 +48,7 @@ class App extends React.Component {
       itemInput: '',
       inputDate: '',
       checkDate: '',
+      checkDay: '',
       returnedList: [],
       dayOfWeek: 'Monday',
       toDo: ''
@@ -90,6 +92,22 @@ class App extends React.Component {
     this.setState({returnedList: this.state.toDoList.filter(thing => thing.dueDate === this.state.checkDate)})
     //every time this is triggered, the value is sent to the itemInput state
   }
+
+
+
+  handleCheckDay=(event) => {
+    event.preventDefault()
+    this.setState({checkDay: event.target.value})
+  }
+
+
+
+
+
+
+
+
+
 
 
   handleItemInputChange = (event) => {
@@ -175,6 +193,11 @@ class App extends React.Component {
           checkDate ={this.handleCheckDate}
           searchDate={this.handleSearchDate}
           resultList={this.state.returnedList}
+        />
+        <br></br>
+        <br></br>
+        <dayChecker 
+          checkDay ={this.handleCheckDay}
         />
         </header>
       </div>
